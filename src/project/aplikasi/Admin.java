@@ -110,10 +110,6 @@ public class Admin extends javax.swing.JFrame {
 
     private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
         // TODO add your handling code here:
-        DataSiswa DataSiswaFrame= new DataSiswa();
-        DataSiswaFrame.setVisible(true);
-        DataSiswaFrame.setLocationRelativeTo(null);
-        this.dispose();
     }//GEN-LAST:event_jMenu1ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed

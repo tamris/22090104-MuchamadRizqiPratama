@@ -6,6 +6,10 @@ package project.aplikasi;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.sql.Connection;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.swing.Timer;
+
 
 /**
  *
@@ -14,7 +18,8 @@ import java.sql.Connection;
 public class Siswa extends javax.swing.JFrame {
 
     private Connection Connection;
-
+    
+    private Timer timer;
     /**
      * Creates new form Siswa
      */
@@ -49,7 +54,7 @@ public class Siswa extends javax.swing.JFrame {
         txtNama = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        TxtHadir = new javax.swing.JTextField();
+        txtWaktu = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -174,9 +179,9 @@ public class Siswa extends javax.swing.JFrame {
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
-        TxtHadir.addActionListener(new java.awt.event.ActionListener() {
+        txtWaktu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TxtHadirActionPerformed(evt);
+                txtWaktuActionPerformed(evt);
             }
         });
 
@@ -203,7 +208,7 @@ public class Siswa extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtKelas, javax.swing.GroupLayout.DEFAULT_SIZE, 461, Short.MAX_VALUE)
-                            .addComponent(TxtHadir, javax.swing.GroupLayout.DEFAULT_SIZE, 461, Short.MAX_VALUE)
+                            .addComponent(txtWaktu, javax.swing.GroupLayout.DEFAULT_SIZE, 461, Short.MAX_VALUE)
                             .addComponent(txtNama)
                             .addComponent(txtNis))))
                 .addGap(49, 49, Short.MAX_VALUE))
@@ -227,7 +232,7 @@ public class Siswa extends javax.swing.JFrame {
                 .addComponent(jLabel9)
                 .addGap(31, 31, 31)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(TxtHadir, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtWaktu, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10))
                 .addGap(131, 131, 131))
         );
@@ -241,13 +246,13 @@ public class Siswa extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 812, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 106, Short.MAX_VALUE))
+                .addGap(0, 54, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 529, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 48, Short.MAX_VALUE))
+                .addGap(0, 51, Short.MAX_VALUE))
         );
 
         pack();
@@ -278,14 +283,20 @@ public class Siswa extends javax.swing.JFrame {
                 String kelas = rs.getString("kelas");
                 txtNama.setText(nama);
                 txtKelas.setText(kelas); 
+                
+                Date now = new Date();
+                SimpleDateFormat dateFormat =  new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                String dateTime = dateFormat.format(now);
+                
+                txtWaktu.setText("Waktu: " + dateTime);
             }
         } catch (Exception e) {
         }
     }//GEN-LAST:event_txtNisActionPerformed
 
-    private void TxtHadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtHadirActionPerformed
+    private void txtWaktuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtWaktuActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TxtHadirActionPerformed
+    }//GEN-LAST:event_txtWaktuActionPerformed
 
     /**
      * @param args the command line arguments
@@ -323,7 +334,6 @@ public class Siswa extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField TxtHadir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
@@ -343,5 +353,6 @@ public class Siswa extends javax.swing.JFrame {
     private javax.swing.JTextField txtKelas;
     private javax.swing.JTextField txtNama;
     private javax.swing.JTextField txtNis;
+    private javax.swing.JTextField txtWaktu;
     // End of variables declaration//GEN-END:variables
 }
