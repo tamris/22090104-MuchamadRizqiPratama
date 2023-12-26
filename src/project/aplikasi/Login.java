@@ -53,11 +53,10 @@ public class Login extends javax.swing.JFrame {
                 if (resultSet.next()) {
                     // Login berhasil
                     JOptionPane.showMessageDialog(null, "Login berhasil!");
+                    // Lakukan tindakan setelah login berhasil
                     Admin AdminFrame = new Admin();
                     AdminFrame.setVisible(true);    
-                    AdminFrame.setLocationRelativeTo(null);
                     this.dispose();
-                    // Lakukan tindakan setelah login berhasil
                 } else {
                     // Login gagal
                     JOptionPane.showMessageDialog(null, "Login gagal. Periksa username dan password.");
