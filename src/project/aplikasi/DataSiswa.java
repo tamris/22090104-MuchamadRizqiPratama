@@ -219,6 +219,8 @@ public class DataSiswa extends javax.swing.JFrame {
             }
         });
 
+        btnHapus.setBackground(new java.awt.Color(255, 51, 51));
+        btnHapus.setForeground(new java.awt.Color(255, 255, 255));
         btnHapus.setText("Hapus");
         btnHapus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -237,6 +239,11 @@ public class DataSiswa extends javax.swing.JFrame {
         jLabel6.setText("Cari Data");
 
         cmbCari.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "NIS", "nama", " " }));
+        cmbCari.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbCariActionPerformed(evt);
+            }
+        });
 
         txtCari.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -460,6 +467,10 @@ public class DataSiswa extends javax.swing.JFrame {
         AdminFrame.setVisible(true);    
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void cmbCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbCariActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbCariActionPerformed
 
     /**
      * @param args the command line arguments
