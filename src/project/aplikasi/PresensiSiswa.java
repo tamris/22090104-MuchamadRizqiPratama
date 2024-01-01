@@ -12,6 +12,7 @@ import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.Timer;
 import javax.swing.table.DefaultTableModel;
 
@@ -151,7 +152,7 @@ public class PresensiSiswa extends javax.swing.JFrame {
 
         txtNama.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
-        jTable1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jTable1.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -179,7 +180,7 @@ public class PresensiSiswa extends javax.swing.JFrame {
         });
 
         buttonGroup1.add(rbHadir);
-        rbHadir.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        rbHadir.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         rbHadir.setSelected(true);
         rbHadir.setText("Hadir");
         rbHadir.addActionListener(new java.awt.event.ActionListener() {
@@ -189,7 +190,7 @@ public class PresensiSiswa extends javax.swing.JFrame {
         });
 
         buttonGroup1.add(jRadioButton2);
-        jRadioButton2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jRadioButton2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jRadioButton2.setText("Keluar");
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
@@ -262,12 +263,12 @@ public class PresensiSiswa extends javax.swing.JFrame {
                 .addGroup(bodyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtWaktu, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
-                .addGap(30, 30, 30)
+                .addGap(33, 33, 33)
                 .addGroup(bodyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel7)
                     .addGroup(bodyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtKeluar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabel7)
+                        .addComponent(txtKeluar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -314,7 +315,7 @@ public class PresensiSiswa extends javax.swing.JFrame {
                 String dateTime = dateFormat.format(now);
                 txtWaktu.setText(dateTime);
                 
-                String q = "INSERT INTO tbl_kehadiran (nama, kelas, nis, waktu_hadir) VALUES ('" + txtNama.getText() + "' , " + txtKelas.getText()
+                String q = "INSERT INTO tbl_hadir (nama, kelas, nis, waktu_hadir) VALUES ('" + txtNama.getText() + "' , " + txtKelas.getText()
                 + " , " + txtNis.getText() + " , CURRENT_TIMESTAMP )";
                 
                 stat.executeUpdate(q);
@@ -326,17 +327,22 @@ public class PresensiSiswa extends javax.swing.JFrame {
                 m.addRow(data);
                 
                 }else {
+                    
+                    if (txtWaktu.getText().isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "Anda belum melakukan absensi kehadiran");
+                     return;
+                    }
+                    
                     Date now = new Date ();
                     SimpleDateFormat dateFormat = new SimpleDateFormat ("yyyy-MM-dd HH:mm");
                     String waktu_Keluar = dateFormat.format(now);
                     txtKeluar.setText(waktu_Keluar);
                     
-                    String s = "INSERT INTO tbl_kehadiran (nama, kelas, nis, waktu_keluar) VALUES ('" + txtNama.getText() + "' , " + txtKelas.getText()
+                   String s = "INSERT INTO tbl_keluar (nama, kelas, nis, waktu_keluar) VALUES ('" + txtNama.getText() + "' , " + txtKelas.getText()
                     + " , " + txtNis.getText() + " , CURRENT_TIMESTAMP )";
                 
                     stat.executeUpdate(s);
                     
-                
                     // Find the index of the last added row
                     int lastIndex = m.getRowCount() - 1;
 
@@ -345,15 +351,11 @@ public class PresensiSiswa extends javax.swing.JFrame {
 
                     txtNis.setText("");
                     txtNis.requestFocus();
-                    
                 }
-                
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-        
-        
     }//GEN-LAST:event_txtNisActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

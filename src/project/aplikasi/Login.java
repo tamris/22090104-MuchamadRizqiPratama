@@ -52,7 +52,8 @@ public class Login extends javax.swing.JFrame {
                 // Periksa hasil query
                 if (resultSet.next()) {
                     // Login berhasil
-                    JOptionPane.showMessageDialog(null, "Login berhasil!");
+                    // JOptionPane.showMessageDialog(null, "Login berhasil!");
+                    
                     // Lakukan tindakan setelah login berhasil
                     Admin AdminFrame = new Admin();
                     AdminFrame.setVisible(true);    
